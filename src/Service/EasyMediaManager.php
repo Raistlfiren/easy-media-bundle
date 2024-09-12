@@ -150,7 +150,7 @@ class EasyMediaManager
         return $entity;
     }
 
-    public function createMedia($source, $path = null, $name = null) : Media
+    public function createMedia($source, $path = null, $name = null, ?Folder $folder) : Media
     {
         $class = $this->getHelper()->getMediaClassName();
         /** @var Media $entity */
@@ -159,10 +159,14 @@ class EasyMediaManager
         if($name) {
             $entity->setName($this->helper->cleanName($name));
         };
-        $folder = $this->folderByPath($path);
-        if($folder === false) {
-            throw new FolderNotExist("The folder does not exist");
+
+        if (! $folder) {
+            $folder = $this->folderByPath($path);
+            if($folder === false) {
+                throw new FolderNotExist("The folder does not exist");
+            }
         }
+
         $entity->setFolder($folder);
 
         if (substr($source, 0, 5) == 'data:') {
