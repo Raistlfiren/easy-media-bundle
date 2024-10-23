@@ -238,6 +238,7 @@ fos_ck_editor:
 ```
 
 ### Integrate with LiipImagineBundle
+[Auto Optimize Images on Upload Event Listener](doc/liip_integration.md)
 
 ```yaml
 #config/packages/liip_imagine.yaml
