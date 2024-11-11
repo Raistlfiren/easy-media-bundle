@@ -52,7 +52,7 @@
                         {% else %}
                             <div class="ratio ratio-16x9 w-100">
                                 {% if field.value|media_infos %}
-                                    <object data="{{ field.value|resolve_media }}" type="{{ (field.value|media_infos).type }}"  class="img-fluid"></object>
+                                    <object data="{{ easy_media_path(field.value) }}" type="{{ (field.value|media_infos).type }}"  class="img-fluid"></object>
                                 {% endif %}
                             </div>
                         {% endif %}
